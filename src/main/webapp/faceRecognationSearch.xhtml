@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+    <meta name="description" content="KG Teknoloji Search Engine"/>
+    <meta name="author" content="KG Teknoloji"/>
+    <title>KG Teknoloji</title>
+    <link rel="apple-touch-icon" href="Assets/images/apple-touch-icon.png"/>
+    <link rel="shortcut icon" href="Assets/images/favicon.png"/>
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="Assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="Assets/css/bootstrap-extend.min.css"/>
+    <link rel="stylesheet" href="Assets/css/site.min.css"/>
+    <link rel="stylesheet" href="Assets/css/projects.css"/>
+    <!-- Plugins -->
+    <link rel="stylesheet" href="Assets/vendor/animsition/animsition.css"/>
+    <link rel="stylesheet" href="Assets/vendor/jquery-selective/jquery-selective.css"/>
+    <link rel="stylesheet" href="Assets/vendor/magnific-popup/magnific-popup.css"/>
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/fonts/web-icons/web-icons.min.css"/>
+    <link rel="stylesheet"  href="Assets/fonts/roboto/roboto.css" />
+    <!--[if lt IE 9]>
+      <script src="Assets/html5shiv/html5shiv.min.js"></script>
+      <![endif]-->
+    <!--[if lt IE 10]>
+      <script src="Assets/media-match/media.match.min.js"></script>
+      <script src="Assets/respond/respond.min.js"></script>
+      <![endif]-->
+    <!-- Scripts -->
+    <script src="Assets/vendor/modernizr/modernizr.js"></script>
+    <script src="Assets/vendor/breakpoints/breakpoints.js"></script>
+    <script>
+        Breakpoints();
+    </script>
+</h:head>
+
+<h:body class="app-projects">
+    <!--[if lt IE 8]>
+          <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+
+    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-inverse" role="navigation">
+        <div class="navbar-header">
+         
+            <div class="navbar-brand navbar-brand-center site-gridmenu-toggle" data-toggle="gridmenu">
+                <img class="navbar-brand-logo" src="Assets/images/logo-kg.png"/>
+            </div>
+        </div>
+       
+    </nav>
+
+    <div class="page-content container-fluid">
+        <div class="row">
+            
+
+            <div class="col-md-4">
+                
+                <div class="page-header">
+                  
+                   <h:messages></h:messages>
+                  
+                    <div class="col-md-12">
+                        <div class="example">
+                        
+                        	<p:tabView >
+        
+        <p:tab title="Search Person">
+            <h:form enctype="multipart/form-data" prependId="false">
+            <h:panelGrid columns="3" cellpadding="10">
+                <h:outputLabel value="Resim"></h:outputLabel>
+			   <h:outputLabel value=":"></h:outputLabel>   
+			   <p:fileUpload value="#{faceMB.identityFile}" required="true" mode="simple" skinSimple="true"/>    
+            </h:panelGrid>
+            <h:commandLink action="#{faceMB.identityPerson}" styleClass="btn btn-animate btn-animate-side btn-primary btn-sm">
+                              	 <span>Search Person</span>
+                              	</h:commandLink>
+                              	
+              <h:panelGrid columns="2">                   	
+             <p:graphicImage value="#{faceMB.myImage}" width="150" height="150" cache="false"></p:graphicImage>
+             <p:graphicImage value="#{faceMB.myImage2}" width="150" height="150" cache="false"></p:graphicImage>                 	
+             <h:outputLabel value="İsim"></h:outputLabel>  
+             <h:outputLabel value="#{faceMB.resultDTO.person.name}"></h:outputLabel>
+             <h:outputLabel value="Score"></h:outputLabel>  
+             <h:outputLabel value="#{faceMB.resultDTO.score}"></h:outputLabel>
+                              	</h:panelGrid>
+            </h:form>
+        </p:tab>
+        <p:tab title="Delete Person" rendered="false">
+             <h:form enctype="multipart/form-data" prependId="false">
+            <h:panelGrid columns="2" cellpadding="10">
+                <h:outputLabel value="UserId"></h:outputLabel>
+               <h:outputLabel value=":"></h:outputLabel>
+               <h:inputText value="#{faceMB.userIdForDelete}" required="true"></h:inputText>
+                </h:panelGrid>
+                 <h:commandLink action="#{faceMB.deletePerson}" styleClass="btn btn-animate btn-animate-side btn-primary btn-sm">
+                              	 <span>Delete Person</span>
+                              	</h:commandLink>
+            </h:form>
+        </p:tab>
+    </p:tabView>
+                        	
+                        	
+                        	<br></br>
+                   
+                   <h:form > 
+<!--                   <p:dataTable value="#{faceMB.resultList}" var="person"> -->
+           
+<!--            <f:facet name="header"> -->
+<!--        Eşleşme Listesi -->
+<!--     </f:facet> -->
+<!--              	<p:column headerText="Score"> -->
+<!--         <h:outputText value="#{person.confidence}" /> -->
+<!--     </p:column> -->
+<!--     <p:column headerText="Name"> -->
+<!--         <h:outputText value="#{person.name}" /> -->
+<!--     </p:column> -->
+    
+            
+<!--             </p:dataTable>     -->
+                  
+   
+            
+            <h:commandLink rendered="false" action="#{faceMB.upload}" styleClass="btn btn-animate btn-animate-side btn-primary btn-sm">
+                              	 <span>Temizle</span>
+                              	</h:commandLink>
+                   	
+               </h:form>         	
+                        	
+                        	
+                        	
+                        	
+                        
+                        </div>
+
+                        
+
+                    </div>
+                   
+                     
+                    
+                    
+                </div>
+                
+            </div>
+
+                  
+        </div>
+    </div>
+
+
+
+
+    <!-- Core  -->
+<!--     <script src="Assets/vendor/jquery/jquery.js"></script> -->
+    <script src="Assets/vendor/bootstrap/bootstrap.js"></script>
+    <script src="Assets/vendor/animsition/jquery.animsition.js"></script>
+    <!-- Plugins -->
+    <script src="Assets/vendor/jquery-selective/jquery-selective.min.js"></script>
+    <script src="Assets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Scripts -->
+    <script src="Assets/js/core.js"></script>
+    <script src="Assets/js/site.js"></script>
+    <script src="Assets/js/components/animsition.js"></script>
+    <script src="Assets/js/components/switchery.js"></script>
+    <script src="Assets/js/app.js"></script>
+    <script src="Assets/js/components/animate-list.js"></script>
+    <script src="Assets/examples/js/apps/projects.js"></script>
+    <script src="Assets/examples/js/pages/gallery.js"></script>
+
+</h:body>
+</html>

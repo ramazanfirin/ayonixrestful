@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	>
+<h:body>
+	<ui:composition template="/WEB-INF/tags/layout.xhtml">
+		<ui:define name="content">
+			
+			<h:form enctype="multipart/form-data">
+               <h:messages></h:messages>
+                  
+            <h:panelGrid columns="3" cellpadding="10">
+               <h:outputLabel value="İsim"></h:outputLabel>
+               <h:outputLabel value=":"></h:outputLabel>
+               <h:inputText value="#{faceMB.name}" required="true"></h:inputText>
+               
+               <h:outputLabel value="Soyisim"></h:outputLabel>
+               <h:outputLabel value=":"></h:outputLabel>
+               <h:inputText value="#{faceMB.surname}" required="true"></h:inputText>
+               
+               <h:outputLabel value="Resim"></h:outputLabel>
+			   <h:outputLabel value=":"></h:outputLabel>   
+			   <p:fileUpload value="#{faceMB.searchFile}" required="true" mode="simple" skinSimple="true"/>            
+            </h:panelGrid>
+            <h:commandLink action="#{faceMB.upload}" styleClass="btn btn-animate btn-animate-side btn-primary btn-sm">
+                              	 <span>ARA</span>
+                              	</h:commandLink>
+                              	
+                              	
+            </h:form>     
+			
+				
+				
+				
+				
+			
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

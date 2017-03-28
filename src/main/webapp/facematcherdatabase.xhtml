@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+<style>
+	.ui-widget {
+	font-size: 14px;
+	}
+	</style>
+
+</h:head>	
+	
+<h:body>
+
+
+<div>
+    <div style="width:100%;float:left;display:inline-block;">
+
+	
+	<br></br>
+	<h:form enctype="multipart/form-data" prependId="false">
+	<p:panel header="Yeni Kayıt">
+	<h:messages id="newRecordError"></h:messages>
+	<h:outputText value="İsim:"> </h:outputText>
+	<h:inputText value="#{faceMatcherMB.personNane}" required="true" id="isim"> </h:inputText>
+	<p:fileUpload  mode="simple" id="uploadFile" value="#{faceMatcherMB.file}"  required="true" update="newRecordError"  skinSimple="true"/>
+	  <h:commandLink actionListener="#{faceMatcherMB.upload}"  styleClass="btn btn-animate btn-animate-side btn-primary btn-sm">
+                              	    <span>YÜKLE</span>
+                              	</h:commandLink>
+	
+	</p:panel>
+	</h:form>
+	<h:form enctype="multipart/form-data" prependId="false">
+	<p:panel header="Database">
+	<p:commandButton value="Güncelle" action="#{faceMatcherMB.refresh}" update="table"/>
+	<p:commandButton value="Sil" action="#{faceMatcherMB.deleteAll}" update="table"/>
+	<p:dataTable id="table" var="car" value="#{faceMatcherMB.list}" > 
+	
+	<p:column headerText="Resim">
+        
+        
+        	 <p:graphicImage  name="demo/images/photocam/#{car.name}.jpeg"  width="150" height="150"/> 
+    	
+    	</p:column>
+ 
+     
+    <p:column headerText="id">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+	
+	<p:column headerText="name">
+        <h:outputText value="#{car.name}" />
+    </p:column>
+	
+	
+	</p:dataTable>
+	</p:panel>
+	</h:form>
+	
+	
+    </div>
+</div>
+
+
+</h:body>
+</html>

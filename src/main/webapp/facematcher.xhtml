@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+<style>
+	.ui-widget {
+	font-size: 14px;
+	}
+	</style>
+
+</h:head>	
+	
+<h:body>
+
+
+<div>
+    <div style="width:100%;float:left;display:inline-block;">
+      <p:panel header="Face Login Kullanım Ekranı" style="width:100%">
+       <h:form id="captureForm">
+	
+	<h:messages id="captureMessages"></h:messages>
+		<h:panelGrid columns="3" cellpadding="5">
+        
+        
+        <p:photoCam widgetVar="pc" listener="#{faceMatcherMB.oncapture}" update="photo,captureMessages" id="photocam" width="320" height="240" />
+        <h:panelGrid columns="2">
+        <h:outputLabel value="Müşteri ID:"></h:outputLabel>
+      
+        <h:inputText value="#{faceMatcherMB.customerNumber}" size="1"></h:inputText>
+        <p:commandButton value="Karşılaştır" onclick="PF('pc').capture()" />
+        <p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+    <f:facet name="default">
+        <h:outputText value="Status: StandBy" />
+    </f:facet>
+ 
+    <f:facet name="start">
+         <h:outputText value="Status: Running. sometimes there is problem at Ayonix service and waits very long " />
+    </f:facet>
+ 
+    <f:facet name="complete">
+        <h:outputText value="Status: Completed" />
+    </f:facet>
+</p:ajaxStatus>
+        </h:panelGrid>
+        
+        <p:outputPanel id="photo">
+           <h:panelGrid columns="2">
+           		<p:graphicImage value="#{faceMatcherMB.myImage}" cache="false" height="240" width="320"/>
+           		<p:graphicImage  name="demo/images/photocam/#{faceMatcherMB.customerImage}.jpeg"  width="320" height="240"/> 
+  </h:panelGrid>
+  <h:panelGrid columns="1">
+  			<h:outputLabel value="Benzerlik Orani:#{faceMatcherMB.benzerlikOrani}"></h:outputLabel>
+  </h:panelGrid>      
+        </p:outputPanel>
+    </h:panelGrid>
+	</h:form>
+	</p:panel> 
+	
+	
+	
+    </div>
+</div>
+
+
+</h:body>
+</html>
